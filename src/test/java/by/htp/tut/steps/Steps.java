@@ -1,6 +1,8 @@
 package by.htp.tut.steps;
 
 import static by.htp.tut.driver.DriverSinglenot.*;
+
+import by.htp.tut.util.SearchUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +33,8 @@ public class Steps {
 	public void getResults() {
 		SearchPage page = new SearchPage(driver);
 		page.sendText(searchExpression);
-		String count = page.countJobs();
-		logger.info(String.format("%s jobs", count));
+		SearchUtil util = new SearchUtil();
+		util.getResult(page.countJobs());
+		logger.info("search results");
 	}
 }
